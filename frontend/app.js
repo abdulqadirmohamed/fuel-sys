@@ -1,14 +1,31 @@
-document.addEventListener('DOMContentLoaded', function(){
-    fetch('http://localhost:3000/getAll')
-    .then(response => response.json())
-    .then(data => console.log(data))
+document
+  .getElementById("loginForm")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-    loadHTMLTable([])
-});
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-function loadHTMLTable(data){
-    const table = document.querySelector('table tbody');
-    if(data.length === 0){
-        table.innerHTML = "<tr><td class='no-data' colspan='5'>No data</td></tr>"
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      console.log(data)
+
+      if (data.ok) {
+        alert("Login successful!");
+      } else {
+        document.getElementById("error").textContent = data.message;
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      document.getElementById("error").textContent =
+        "An error occurred. Please try again.";
     }
-}
+  });

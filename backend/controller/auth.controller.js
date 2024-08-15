@@ -2,7 +2,10 @@ const pool = require("../database/index")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+
+
 const authController = {
+    
     register: async (req, res) => {
         try {
             const { email, password, name } = req.body
@@ -30,6 +33,7 @@ const authController = {
     },
 
     login: async (req, res) => {
+
         try {
             const { email, password } = req.body
             const [user,] = await pool.query("select * from users where email = ?", [email])
@@ -44,7 +48,6 @@ const authController = {
                 return res.json({
                     accessToken,
                     data: {
-                        userId: id,
                         name,
                         email
                     }
