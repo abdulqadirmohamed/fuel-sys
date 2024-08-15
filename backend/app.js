@@ -1,26 +1,15 @@
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const dotenv = require('dotenv');
-dotenv.config();
+const express = require("express")
+const app = express()
 
-const dbServices = require('./dbServices')
+require('dotenv').config()
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended : false }));
+const postsRouter = require('./routes/post.router')
 
-// CREATE
-app.post('/insert', (req, res)=>{
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
+app.use("/api/posts", postsRouter)
+
+app.listen(3000, ()=>{
+    console.log('server running')
 })
-
-// READ
-app.get('/getAll', (req, res)=>{
-    res.json({name: 'abdulqadir'})
-})
-
-// UPDATE
-// DELETE
-
-app.listen(3000);
