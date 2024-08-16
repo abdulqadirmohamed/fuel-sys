@@ -1,0 +1,47 @@
+<aside
+    class="fixed left-0 right-0 z-10 flex-col flex-shrink-0 h-full overflow-hidden transition-all bg-transparent bottom-10 xl:h-screen top-16 xl:static xl:z-auto"
+    :class="{'flex xl:w-64': isSidebarOpen, 'hidden xl:flex xl:w-16': !isSidebarOpen}">
+    <!-- Sidebar header -->
+    <div
+        class="flex-shrink-0 hidden px-2 max-h-14 xl:items-center xl:justify-start xl:space-x-3 xl:flex xl:max-h-14 xl:h-full xl:px-4">
+        <!-- Sidebar Button -->
+        <button @click="toggleSidebar" class="p-2 text-blue-600 rounded-full hover:bg-blue-200">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+        <!-- Logo -->
+        <a href="#" :class="{'xl:hidden': !isSidebarOpen}"
+            class="flex-shrink-0 text-2xl font-bold tracking-widest text-blue-800 uppercase">
+            K-WD
+        </a>
+    </div>
+    <!-- Sidebar Content -->
+    <div
+        class="fixed left-0 flex flex-col flex-1 max-h-screen px-2 overflow-hidden right-3 top-16 bottom-10 xl:static xl:pt-2 xl:pl-4 xl:mb-4">
+        <div :class="{'min-w-full xl:w-14': isSidebarOpen}"
+            class="flex-1 max-h-full p-2 overflow-y-auto bg-white rounded-md shadow-2xl lg:shadow-md">
+            <nav class="">
+                <ul>
+                    <li class="flex flex-row-reverse">
+                        
+                        <span :class="{'xl:hidden': !isSidebarOpen}"> Dashboard </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-house">
+                            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                            <path
+                                d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        </svg>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</aside>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
