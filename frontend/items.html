@@ -220,11 +220,11 @@
                 <div class=" px-4 py-8">
 
                     <div class="bg-white p-4 rounded flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-indigo-700">Dashboard</h2>
+                        <h2 class="text-xl font-bold text-indigo-700">TEM MANAGEMENT</h2>
 
                         <div x-data="{modalIsOpen: false}">
                             <button @click="modalIsOpen = true" type="button"
-                                class="cursor-pointer whitespace-nowrap rounded bg-indigo-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:bg-blue-600 dark:text-slate-100 dark:focus-visible:outline-blue-600">
+                                class="cursor-pointer whitespace-nowrap rounded bg-red-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:bg-blue-600 dark:text-slate-100 dark:focus-visible:outline-blue-600">
                                 Item Registration</button>
                             <div x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms
                                 x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false"
@@ -251,15 +251,15 @@
                                         </button>
                                     </div>
                                     <!-- Dialog Body -->
-                                    <div class="px-4 py-8 w-[500px]">
-                                        <form action="">
+                                    <form action="" id="itemForm" class="px-4 py-8 w-[500px]">
+                                        <div>
                                             <div class="grid grid-cols-2 gap-4">
                                                 <div class="">
                                                     <label for="country"
                                                         class="block text-sm font-medium leading-6 text-gray-900">Item
                                                         name</label>
                                                     <div class="mt-2">
-                                                        <select id="country" name="country" autocomplete="country-name"
+                                                        <select id="name" name="name" autocomplete="country-name"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                             <option>Diesel</option>
                                                             <option>Petrol</option>
@@ -273,7 +273,7 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900">Receiving
                                                         Tank</label>
                                                     <div class="mt-2">
-                                                        <select id="country" name="country" autocomplete="country-name"
+                                                        <select id="tank" name="tank" autocomplete="country-name"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                             <option>A</option>
                                                             <option>B</option>
@@ -289,7 +289,7 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900 capitalize">Open
                                                         Meter reading</label>
                                                     <div class="mt-2">
-                                                        <input type="text"
+                                                        <input type="text" name="open_meter" id="open_meter"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
@@ -298,7 +298,7 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900 capitalize">close
                                                         Meter reading</label>
                                                     <div class="mt-2">
-                                                        <input type="text"
+                                                        <input type="text" name="close_meter" id="close_meter"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
@@ -309,7 +309,7 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900 capitalize">Volume
                                                         (quantity)</label>
                                                     <div class="mt-2">
-                                                        <input type="text"
+                                                        <input type="text" name="valume" id="valume"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
@@ -318,7 +318,7 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900 capitalize">Item
                                                         rate</label>
                                                     <div class="mt-2">
-                                                        <input type="text"
+                                                        <input type="text" name="rate" id="rate"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
@@ -329,7 +329,7 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900 capitalize">Evaporation
                                                         loss: Qty</label>
                                                     <div class="mt-2">
-                                                        <input type="text"
+                                                        <input type="text" name="qty" id="qty"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
@@ -349,94 +349,55 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900 capitalize">Item
                                                         Description</label>
                                                     <div class="mt-2">
-                                                        <textarea rows="4" type="text"
+                                                        <textarea rows="4" type="text" name="description"
+                                                            id="description"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <!-- Dialog Footer -->
-                                    <div
-                                        class="flex justify-between gap-2 border-t border-slate-300 bg-slate-100/60 p-4 sm:flex-row sm:items-center md:justify-end">
+                                        </div>
+                                        <!-- Dialog Footer -->
+                                        <div
+                                            class="flex justify-between gap-2 border-t border-slate-300 bg-slate-100/60 p-4 sm:flex-row sm:items-center md:justify-end">
 
-                                        <button @click="modalIsOpen = false" type="button"
-                                            class="cursor-pointer whitespace-nowrap rounded bg-indigo-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 ">Save
-                                            Item</button>
-                                        <button @click="modalIsOpen = false" type="button"
-                                            class="cursor-pointer whitespace-nowrap rounded px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-700 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:focus-visible:outline-blue-600">Close</button>
-                                    </div>
+                                            <button @click="modalIsOpen = false" type="submit"
+                                                class="cursor-pointer whitespace-nowrap rounded bg-indigo-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 ">Save
+                                                Item</button>
+                                            <button @click="modalIsOpen = false" type="button"
+                                                class="cursor-pointer whitespace-nowrap rounded px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-700 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:focus-visible:outline-blue-600">Close</button>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class=" -mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                         <div class="bg-white rounded p-6 inline-block min-w-full rounded overflow-hidden">
-                            <table id="example" class="display" cellspacing="0">
+                            <table id="dataTable" class="display" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary.</th>
+                                        <th>Item Name</th>
+                                        <th>Open Meter reading</th>
+                                        <th>Close Meter reading</th>
+                                        <th>Volume (quantity)</th>
+                                        <th>Item rate.</th>
+                                        <th>Created At</th>
                                     </tr>
                                 </thead>
 
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Item Name</th>
+                                        <th>Open Meter reading</th>
+                                        <th>Close Meter reading</th>
+                                        <th>Volume (quantity)</th>
+                                        <th>Item rate</th>
+                                        <th>Created At</th>
                                     </tr>
                                 </tfoot>
 
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
-
+                                <tbody id="tbody" class="capitalize">
                                 </tbody>
                             </table>
 
@@ -447,11 +408,56 @@
             </div>
         </div>
 
+        <script>
+            async function getData() {
+                const records = await fetch('http://localhost:3000/api/items');
+                const response = await records.json();
+
+                const data = response.data;
+
+                let tab = '';
+                data.forEach(function (item) {
+                    tab += `<tr>
+            <td>${item.name}</td>
+            <td>${item.open_meter}</td>
+            <td>${item.close_meter}</td>
+            <td>${item.rate}</td>
+            <td>${item.Qty}</td>
+            <td>${new Date(item.entry_date).toLocaleDateString()}</td>
+        </tr>`;
+                });
+
+                document.getElementById('tbody').innerHTML = tab;
+            }
+
+            getData();
+
+            // Insert data
+            let form = document.querySelector('#itemForm')
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                let formData = new FormData(form)
+                let data = Object.fromEntries(formData)
+                let jsonData = JSON.stringify(data)
+                fetch('http://localhost:3000/api/items', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: jsonData
+                }).then(res => res.json())
+                    .then(result => console.log(result))
+                    .catch(err => console.log(err))
+            });
+
+        </script>
+
         <script src="https://unpkg.com/lucide@latest"></script>
+        <script src="app.js"></script>
         <script>
             lucide.createIcons();
             $(document).ready(function () {
-                $('#example').DataTable();
+                $('#dataTable').DataTable();
             });
         </script>
 

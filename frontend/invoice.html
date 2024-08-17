@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 p-10">
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">Company Name</h1>
+                <p class="text-gray-600">123 Street, City, Country</p>
+                <p class="text-gray-600">email@example.com</p>
+            </div>
+            <div>
+                <h2 class="text-xl font-bold text-gray-800">Invoice</h2>
+                <p class="text-gray-600">#INV-001</p>
+                <p class="text-gray-600">Date: <span id="invoiceDate"></span></p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Bill To:</h3>
+            <p class="text-gray-600">Client Name</p>
+            <p class="text-gray-600">456 Avenue, City, Country</p>
+            <p class="text-gray-600">client@example.com</p>
+        </div>
+
+        <table class="w-full mb-6">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="text-left py-2 px-4 text-gray-800">Description</th>
+                    <th class="text-right py-2 px-4 text-gray-800">Quantity</th>
+                    <th class="text-right py-2 px-4 text-gray-800">Unit Price</th>
+                    <th class="text-right py-2 px-4 text-gray-800">Total</th>
+                </tr>
+            </thead>
+            <tbody id="invoiceItems">
+                <!-- Invoice items will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="text-right">
+            <p class="text-gray-800 text-lg font-bold">Subtotal: <span id="subtotal">$0.00</span></p>
+            <p class="text-gray-800 text-lg font-bold">Tax (10%): <span id="tax">$0.00</span></p>
+            <p class="text-gray-800 text-xl font-bold">Total: <span id="total">$0.00</span></p>
+        </div>
+    </div>
+
+    <script src="./script/invoice.js"></script>
+</body>
+
+</html>
