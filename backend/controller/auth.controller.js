@@ -64,6 +64,23 @@ const authController = {
             })
         }
     },
+
+    logout: async (req, res) => {
+        try {
+            // For stateless JWT, the client can just remove the token.
+            // If you're using cookies to store the token, you can clear it like this:
+            res.clearCookie('token');  // If using cookies
+            return res.json({ message: "Logged out successfully." });
+
+            // Optionally: Implement token blacklisting by saving the token in a blacklist table in the database
+            // const token = req.header('Authorization').replace('Bearer ', '');
+            // await pool.query("INSERT INTO token_blacklist (token) VALUES (?)", [token]);
+
+        } catch (error) {
+            console.log(error);
+            res.json({ error: error.message });
+        }
+    },
 }
 
 module.exports = authController
