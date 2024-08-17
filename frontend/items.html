@@ -224,8 +224,8 @@
 
                         <div x-data="{modalIsOpen: false}">
                             <button @click="modalIsOpen = true" type="button"
-                                class="cursor-pointer whitespace-nowrap rounded bg-red-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:bg-blue-600 dark:text-slate-100 dark:focus-visible:outline-blue-600">
-                                Item Registration</button>
+                                class="flex items-center gap-2 cursor-pointer whitespace-nowrap rounded bg-indigo-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:bg-blue-600 dark:text-slate-100 dark:focus-visible:outline-blue-600">
+                               <i data-lucide="plus"></i> Item Registration</button>
                             <div x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms
                                 x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false"
                                 @click.self="modalIsOpen = false"
@@ -261,10 +261,10 @@
                                                     <div class="mt-2">
                                                         <select id="name" name="name" autocomplete="country-name"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                            <option>Diesel</option>
-                                                            <option>Petrol</option>
-                                                            <option>Gas</option>
-                                                            <option>Kerosene</option>
+                                                            <option value="diesel">Diesel</option>
+                                                            <option value="petrol">Petrol</option>
+                                                            <option value="gas">Gas</option>
+                                                            <option value="kerosene">Kerosene</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -275,10 +275,10 @@
                                                     <div class="mt-2">
                                                         <select id="tank" name="tank" autocomplete="country-name"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                            <option>A</option>
-                                                            <option>B</option>
-                                                            <option>C</option>
-                                                            <option>D</option>
+                                                            <option value="a">A</option>
+                                                            <option value="b">B</option>
+                                                            <option value="c">C</option>
+                                                            <option value="d">D</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -309,7 +309,7 @@
                                                         class="block text-sm font-medium leading-6 text-gray-900 capitalize">Volume
                                                         (quantity)</label>
                                                     <div class="mt-2">
-                                                        <input type="text" name="valume" id="valume"
+                                                        <input type="text" name="volume" id="volume"
                                                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
@@ -422,7 +422,7 @@
             <td>${item.open_meter}</td>
             <td>${item.close_meter}</td>
             <td>${item.rate}</td>
-            <td>${item.Qty}</td>
+            <td>${item.qty}</td>
             <td>${new Date(item.entry_date).toLocaleDateString()}</td>
         </tr>`;
                 });
@@ -446,7 +446,7 @@
                     },
                     body: jsonData
                 }).then(res => res.json())
-                    .then(result => console.log(result))
+                    .then(result => window.location.href=window.location.href)
                     .catch(err => console.log(err))
             });
 
