@@ -1,10 +1,10 @@
 const pool = require("../database/index")
 
-const postsController = {
-    // Gell all posts
+const customersController = {
+    // Gell all customers
     getAll: async (req, res) => {
         try {
-            const [rows, fields] = await pool.query("select * from posts")
+            const [rows, fields] = await pool.query("select * from customers")
             res.json({
                 data: rows
             })
@@ -19,7 +19,7 @@ const postsController = {
     getById: async (req, res) => {
         try {
             const { id } = req.params
-            const [rows, fields] = await pool.query("select * from posts where id = ?", [id])
+            const [rows, fields] = await pool.query("select * from customers where id = ?", [id])
             res.json({
                 data: rows
             })
@@ -34,9 +34,9 @@ const postsController = {
     // INSERT POST IN TO DATABASE
     create: async (req, res) => {
         try {
-            const { title, content } = req.body
-            const sql = "insert into posts (title, content) values (?, ?)"
-            const [rows, fields] = await pool.query(sql, [title, content])
+            const { name, phone, address } = req.body
+            const sql = "INSERT INTO customers (name, phone, address) VALUES (?,?,?)"
+            const [rows, fields] = await pool.query(sql, [name, phone, address])
             res.json({
                 data: rows
             })
@@ -51,10 +51,10 @@ const postsController = {
     // Update data
     update: async (req, res) => {
         try {
-            const { title, content } = req.body
+            const { name, phone, address } = req.body
             const { id } = req.params
-            const sql = "update posts set title = ?, content = ? where id = ?"
-            const [rows, fields] = await pool.query(sql, [title, content, id])
+            const sql = "update customers set name = ?, phone = ?, address = ? where id = ?"
+            const [rows, fields] = await pool.query(sql, [name, phone, address, id])
             res.json({
                 data: rows
             })
@@ -70,7 +70,7 @@ const postsController = {
     delete: async (req, res) => {
         try {
             const { id } = req.params
-            const [rows, fields] = await pool.query("delete from posts where id = ?", [id])
+            const [rows, fields] = await pool.query("delete from customers where id = ?", [id])
             res.json({
                 data: rows
             })
@@ -83,4 +83,4 @@ const postsController = {
     }
 }
 
-module.exports = postsController
+module.exports = customersController

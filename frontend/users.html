@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items</title>
+    <title>Users</title>
 </head>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css">
-<script src="https://cdn.tailwindcss.com"></script>
+
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -16,6 +16,8 @@
 
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.0/bootstrap-table.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
 
 <body>
 
@@ -53,7 +55,7 @@
 
                             <li>
                                 <a href="items.html"
-                                    class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium bg-indigo-700 text-white hover:text-blue-600 hover:bg-gray-200">
+                                    class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
                                     <i data-lucide="fuel" class="w-5 mr-5"></i>
                                     Items
                                 </a>
@@ -84,10 +86,10 @@
 
                             <li>
                                 <a href="users.html"
-                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
-                                <i data-lucide="user" class="w-5 mr-5"></i>
-                                Users
-                            </a>
+                                    class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium bg-indigo-700 text-white  hover:text-blue-600 hover:bg-gray-200">
+                                    <i data-lucide="user" class="w-5 mr-5"></i>
+                                    Users
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -119,7 +121,7 @@
 
                         <li>
                             <a href="items.html"
-                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium bg-indigo-700 text-white hover:text-blue-600 hover:bg-gray-200">
+                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
                                 <i data-lucide="fuel" class="w-5 mr-5"></i>
                                 Items
                             </a>
@@ -150,7 +152,7 @@
 
                         <li>
                             <a href="users.html"
-                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
+                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium bg-indigo-700 text-white  hover:text-blue-600 hover:bg-gray-200">
                                 <i data-lucide="user" class="w-5 mr-5"></i>
                                 Users
                             </a>
@@ -220,12 +222,12 @@
                 <div class=" px-4 py-8">
 
                     <div class="bg-white p-4 rounded flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-indigo-700">TEM MANAGEMENT</h2>
+                        <h2 class="text-xl font-bold text-indigo-700">Users</h2>
 
                         <div x-data="{modalIsOpen: false}">
                             <button @click="modalIsOpen = true" type="button"
                                 class="flex items-center gap-2 cursor-pointer whitespace-nowrap rounded bg-indigo-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:bg-blue-600 dark:text-slate-100 dark:focus-visible:outline-blue-600">
-                               <i data-lucide="plus"></i> Item Registration</button>
+                                <i data-lucide="plus"></i> User Registration</button>
                             <div x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms
                                 x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false"
                                 @click.self="modalIsOpen = false"
@@ -239,7 +241,7 @@
                                     class="flex max-w-lg flex-col gap-4 overflow-hidden rounded-xl border border-slate-300 bg-white text-slate-700">
                                     <!-- Dialog Header -->
                                     <div class="flex items-center justify-between border-b border-slate-300 p-4">
-                                        <h3 id="defaultModalTitle" class="font-semibold tracking-wide">Item Registration
+                                        <h3 id="defaultModalTitle" class="font-semibold tracking-wide">User Registration
                                         </h3>
                                         <button @click="modalIsOpen = false" aria-label="close modal">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -251,112 +253,43 @@
                                         </button>
                                     </div>
                                     <!-- Dialog Body -->
-                                    <form action="" id="itemForm" class="px-4 py-8 w-[500px]">
+                                    <form action="" id="customersForm" class="px-4 py-8 w-[500px]">
                                         <div>
-                                            <div class="grid grid-cols-2 gap-4">
-                                                <div class="">
-                                                    <label for="country"
-                                                        class="block text-sm font-medium leading-6 text-gray-900">Item
-                                                        name</label>
-                                                    <div class="mt-2">
-                                                        <select id="name" name="name" autocomplete="country-name" required
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                 
-                                                            <option selected disabled="disabled" value="">Choose Item Name</option>
-                                                            <option value="diesel">Diesel</option>
-                                                            <option value="petrol">Petrol</option>
-                                                            <option value="gas">Gas</option>
-                                                            <option value="kerosene">Kerosene</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <label for="tank"
-                                                        class="block text-sm font-medium leading-6 text-gray-900">Receiving
-                                                        Tank</label>
-                                                    <div class="mt-2">
-                                                        <select id="tank" name="tank" required
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                            <option selected disabled value="">Choose Tank</option>
-                                                            <option value="a">A</option>
-                                                            <option value="b">B</option>
-                                                            <option value="c">C</option>
-                                                            <option value="d">D</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                            <label for="name"
+                                                class="block text-sm font-medium leading-6 text-gray-900 capitalize">Full
+                                                Name</label>
+                                            <div class="mt-2">
+                                                <input type="text" name="name" id="name" required
+                                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6">
                                             </div>
-                                            <div class="grid grid-cols-2 gap-4 my-2">
-                                                <div class="">
-                                                    <label for="open_meter"
-                                                        class="block text-sm font-medium leading-6 text-gray-900 capitalize">Open
-                                                        Meter reading</label>
-                                                    <div class="mt-2">
-                                                        <input type="text" name="open_meter" id="open_meter" required
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <label for="close_meter"
-                                                        class="block text-sm font-medium leading-6 text-gray-900 capitalize">close
-                                                        Meter reading</label>
-                                                    <div class="mt-2">
-                                                        <input type="text" name="close_meter" id="close_meter" required
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                    </div>
-                                                </div>
+                                        </div>
+                                        <div class="my-2">
+                                            <label for="email"
+                                                class="block text-sm font-medium leading-6 text-gray-900 capitalize">Email</label>
+                                            <div class="mt-2">
+                                                <input type="email" name="email" id="email" required
+                                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6">
                                             </div>
-                                            <div class="grid grid-cols-2 gap-4 my-2">
-                                                <div class="">
-                                                    <label for="volume"
-                                                        class="block text-sm font-medium leading-6 text-gray-900 capitalize">Volume
-                                                        (quantity)</label>
-                                                    <div class="mt-2">
-                                                        <input type="text" name="volume" id="volume" required
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <label for="rate"
-                                                        class="block text-sm font-medium leading-6 text-gray-900 capitalize">Item
-                                                        rate</label>
-                                                    <div class="mt-2">
-                                                        <input type="text" name="rate" id="rate" required
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                    </div>
-                                                </div>
+                                        </div>
+                                        <div class="my-2">
+                                            <label for="password"
+                                                class="block text-sm font-medium leading-6 text-gray-900 capitalize">Password</label>
+                                            <div class="mt-2">
+                                                <input type="password" name="password" id="password" required
+                                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6">
                                             </div>
-                                            <div class="grid grid-cols-2 gap-4 my-2">
-                                                <div class="">
-                                                    <label for="qty"
-                                                        class="block text-sm font-medium leading-6 text-gray-900 capitalize">Evaporation
-                                                        loss: Qty</label>
-                                                    <div class="mt-2">
-                                                        <input type="text" name="qty" id="qty" required
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                    </div>
-                                                </div>
-                                                <div class="">
-                                                    <label for="country"
-                                                        class="block text-sm font-medium leading-6 text-gray-900 capitalize">Entry
-                                                        date</label>
-                                                    <div class="mt-2">
-                                                        <input type="date" name="entry_date"
-                                                            class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="w-full my-2">
-                                                <div class="col-span-2">
-                                                    <label for="country"
-                                                        class="block text-sm font-medium leading-6 text-gray-900 capitalize">Item
-                                                        Description</label>
-                                                    <div class="mt-2">
-                                                        <textarea rows="4" type="text" name="description"
-                                                            id="description"
-                                                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:text-sm sm:leading-6"></textarea>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                        <div class="my-2">
+                                            <label for="address"
+                                                class="block text-sm font-medium leading-6 text-gray-900 capitalize">
+                                                Role</label>
+                                            <div class="mt-2">
+                                                <select id="role" name="role" required
+                                                    class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+
+                                                    <option value="user">User</option>
+                                                    <option value="admin">Admin</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <!-- Dialog Footer -->
@@ -365,7 +298,7 @@
 
                                             <button type="submit"
                                                 class="cursor-pointer whitespace-nowrap rounded bg-indigo-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 ">Save
-                                                Item</button>
+                                                User</button>
                                             <button @click="modalIsOpen = false" type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-700 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:focus-visible:outline-blue-600">Close</button>
                                         </div>
@@ -380,22 +313,18 @@
                             <table id="dataTable" class="display" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Item Name</th>
-                                        <th>Open Meter reading</th>
-                                        <th>Close Meter reading</th>
-                                        <th>Volume (quantity)</th>
-                                        <th>Receiving Tank</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
                                         <th>Created At</th>
                                     </tr>
                                 </thead>
 
                                 <tfoot>
                                     <tr>
-                                        <th>Item Name</th>
-                                        <th>Open Meter reading</th>
-                                        <th>Close Meter reading</th>
-                                        <th>Volume (quantity)</th>
-                                        <th>Receiving Tank</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
                                         <th>Created At</th>
                                     </tr>
                                 </tfoot>
@@ -413,20 +342,18 @@
 
         <script>
             async function getData() {
-                const records = await fetch('http://localhost:3000/api/items');
+                const records = await fetch('http://localhost:3000/api/auth');
                 const response = await records.json();
 
                 const data = response.data;
 
                 let tab = '';
-                data.forEach(function (item) {
+                data.forEach(function (user) {
                     tab += `<tr>
-            <td>${item.name}</td>
-            <td>${item.open_meter}</td>
-            <td>${item.close_meter}</td>
-            <td>${item.volume}</td>
-            <td>${item.tank}</td>
-            <td>${new Date(item.entry_date).toLocaleDateString()}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.role}</td>
+            <td>${new Date(user.created_at).toLocaleDateString()}</td>
         </tr>`;
                 });
 
@@ -436,20 +363,20 @@
             getData();
 
             // Insert data
-            let form = document.querySelector('#itemForm')
+            let form = document.querySelector('#customersForm')
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
                 let formData = new FormData(form)
                 let data = Object.fromEntries(formData)
                 let jsonData = JSON.stringify(data)
-                fetch('http://localhost:3000/api/items', {
+                fetch('http://localhost:3000/api/auth/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: jsonData
                 }).then(res => res.json())
-                    .then(result => window.location.href=window.location.href)
+                    .then(result => window.location.href = window.location.href)
                     .catch(err => console.log(err))
             });
 

@@ -5,18 +5,18 @@ const jwt = require('jsonwebtoken')
 
 
 const authController = {
-    
+
     register: async (req, res) => {
         try {
-            const { email, password, name } = req.body
+            const { email, password, name, role } = req.body
             const [user,] = await pool.query("select * from users where email = ?", [email])
             if (user[0]) return res.json({ error: "Email already exists!" })
 
 
             const hash = await bcrypt.hash(password, 10)
 
-            const sql = "insert into users (email, password, name) values (?, ?, ?)"
-            const [rows, fields] = await pool.query(sql, [email, hash, name])
+            const sql = "insert into users (email, password, name, role) values (?, ?, ?, ?)"
+            const [rows, fields] = await pool.query(sql, [email, hash, name, role])
 
             if (rows.affectedRows) {
                 return res.json({ message: "Ok" })
@@ -65,20 +65,18 @@ const authController = {
         }
     },
 
-    logout: async (req, res) => {
+    // Get All users
+    getAll: async (req, res) => {
         try {
-            // For stateless JWT, the client can just remove the token.
-            // If you're using cookies to store the token, you can clear it like this:
-            res.clearCookie('token');  // If using cookies
-            return res.json({ message: "Logged out successfully." });
-
-            // Optionally: Implement token blacklisting by saving the token in a blacklist table in the database
-            // const token = req.header('Authorization').replace('Bearer ', '');
-            // await pool.query("INSERT INTO token_blacklist (token) VALUES (?)", [token]);
-
+            const [rows, fields] = await pool.query("select * from users")
+            res.json({
+                data: rows
+            })
         } catch (error) {
-            console.log(error);
-            res.json({ error: error.message });
+            console.log(error)
+            res.json({
+                status: "error"
+            })
         }
     },
 }

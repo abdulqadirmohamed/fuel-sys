@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 <script src="https://cdn.tailwindcss.com"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -28,7 +28,8 @@
 
                     <!-- Brand Logo / Name -->
                     <div class="flex items-center px-6 py-3 h-16">
-                        <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span class="text-indigo-700">MS</span></div>
+                        <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span
+                                class="text-indigo-700">MS</span></div>
                     </div>
                     <!-- @end Brand Logo / Name -->
 
@@ -41,7 +42,7 @@
                                     Dashboard
                                 </a>
                             </li>
-    
+
                             <li>
                                 <a href="items.html"
                                     class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
@@ -49,7 +50,7 @@
                                     Items
                                 </a>
                             </li>
-    
+
                             <li>
                                 <a href="purchase.html"
                                     class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
@@ -57,7 +58,7 @@
                                     Purchase
                                 </a>
                             </li>
-    
+
                             <li>
                                 <a href="customers.html"
                                     class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
@@ -72,13 +73,13 @@
                                     Reports
                                 </a>
                             </li>
-    
+
                             <li>
-                                <a href="#"
-                                    class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
-                                    <i data-lucide="user" class="w-5 mr-5"></i>
-                                    Users
-                                </a>
+                                <a href="users.html"
+                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
+                                <i data-lucide="user" class="w-5 mr-5"></i>
+                                Users
+                            </a>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +94,8 @@
 
                 <!-- Brand Logo / Name -->
                 <div class="flex items-center px-6 py-3 h-16">
-                    <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span class="text-indigo-700">MS</span></div>
+                    <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span
+                            class="text-indigo-700">MS</span></div>
                 </div>
                 <!-- @end Brand Logo / Name -->
 
@@ -139,7 +141,7 @@
                         </li>
 
                         <li>
-                            <a href="#"
+                            <a href="users.html"
                                 class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
                                 <i data-lucide="user" class="w-5 mr-5"></i>
                                 Users
@@ -168,7 +170,8 @@
                                 <line x1="4" y1="18" x2="20" y2="18" />
                             </svg>
                         </div>
-                        <div class="text-xl font-bold tracking-tight text-gray-800 md:hidden ml-2">Fuel<span class="text-indigo-700">MS</span></div>
+                        <div class="text-xl font-bold tracking-tight text-gray-800 md:hidden ml-2">Fuel<span
+                                class="text-indigo-700">MS</span></div>
                     </div>
                     <div class="flex items-center">
 
@@ -222,31 +225,40 @@
                             Create Invoice
                         </button>
                     </div>
-                    <div class="grid grid-cols-3 gap-5">
+                    <div class="grid grid-cols-4 gap-5">
                         <div class="bg-white flex justify-between items-center p-5 rounded">
                             <div>
                                 <h1 class="font-bold text-xl">400</h1>
-                                <p class="text-gray-500">Total sales</p>
+                                <p class="text-gray-500">Total Sales Volume</p>
                             </div>
                             <div class="bg-indigo-700 p-4 rounded-md text-indigo-100">
-                                <i data-lucide="users" class="w-5"></i>
+                                <i data-lucide="trending-up" class="w-5"></i>
                             </div>
                         </div>
                         <div class="bg-white flex justify-between items-center p-5 rounded">
                             <div>
                                 <h1 class="font-bold text-xl">200</h1>
-                                <p class="text-gray-500">Costumers</p>
+                                <p class="text-gray-500"> Total Remaining Volume</p>
                             </div>
-                            <div class="bg-indigo-700 p-4 rounded-md text-indigo-100">
-                                <i data-lucide="users" class="w-5"></i>
+                            <div class="bg-red-700 p-4 rounded-md text-indigo-100">
+                                <i data-lucide="dollar-sign" class="w-5"></i>
                             </div>
                         </div>
                         <div class="bg-white flex justify-between items-center p-5 rounded">
                             <div>
                                 <h1 class="font-bold text-xl">400</h1>
-                                <p class="text-gray-500">Total sales</p>
+                                <p class="text-gray-500">Sales Money based on Today</p>
                             </div>
-                            <div class="bg-indigo-700 p-4 rounded-md text-indigo-100">
+                            <div class="bg-green-700 p-4 rounded-md text-indigo-100">
+                                <i data-lucide="badge-cent" class="w-5"></i>
+                            </div>
+                        </div>
+                        <div class="bg-white flex justify-between items-center p-5 rounded">
+                            <div>
+                                <h1 class="font-bold text-xl">400</h1>
+                                <p class="text-gray-500">Total Customers</p>
+                            </div>
+                            <div class="bg-yellow-500 p-4 rounded-md text-indigo-100">
                                 <i data-lucide="users" class="w-5"></i>
                             </div>
                         </div>

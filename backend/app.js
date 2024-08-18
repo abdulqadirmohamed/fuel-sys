@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config()
 
 const itemsRouter = require('./router/items.router')
-const postsRouter = require('./router/post.router')
+const customersRouter = require('./router/customers.router')
 const usersRouter = require('./router/user.router')
 
 app.use(express.urlencoded({extended: false}))
@@ -17,7 +17,7 @@ app.use(cors({
 }));
 
 app.use("/api/items", itemsRouter)
-app.use("/api/posts", postsRouter)
+app.use("/api/customers", customersRouter)
 app.use("/api/auth", usersRouter)
 
 app.listen(3000, ()=>{
