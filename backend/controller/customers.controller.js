@@ -80,7 +80,22 @@ const customersController = {
                 status: "error"
             })
         }
-    }
+    },
+
+    // Total cus
+    totalCustomers: async (req, res) => {
+        try {
+            const [rows, fields] = await pool.query("SELECT COUNT(*) AS total FROM customers")
+            res.json({
+                data: rows
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    },
 }
 
 module.exports = customersController
