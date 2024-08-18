@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="purchase-form">
+        <select name="item_id" id="item-select" required>
+            <!-- This will be dynamically populated with items -->
+        </select>
+
+        <select name="customer_id" id="customer-select" required>
+            <!-- This will be dynamically populated with customers -->
+        </select>
+
+        <input type="datetime-local" name="purchase_date" required>
+
+        <button type="submit">Add Purchase</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Fetch and populate items
+            const itemSelect = document.getElementById('item-select');
+            const responseItems = await fetch('http://localhost:3000/api/items');
+            const items = await responseItems.json();
+
+            // items.forEach(item => {
+            //     const option = document.createElement('option');
+            //     option.value = item.id;
+            //     option.textContent = `${item.item_name} - ${item.item_description}`;
+            //     itemSelect.appendChild(option);
+            // });
+            if (Array.isArray(items)) {
+                items.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.id;
+                    option.textContent = `${item.item_name} - ${item.item_description}`;
+                    itemSelect.appendChild(option);
+                });
+            } else {
+                console.error('Expected an array but got:', items);
+            }
+
+            // Fetch and populate customers
+            const customerSelect = document.getElementById('customer-select');
+            const responseCustomers = await fetch('http://localhost:3000/api/customers');
+            const customers = await responseCustomers.json();
+            if (Array.isArray(customers)) {
+                customers.forEach(customer => {
+                    const option = document.createElement('option');
+                    option.value = customer.id;
+                    option.textContent = `${customer.item_name} - ${customer.item_description}`;
+                    itemSelect.appendChild(option);
+                });
+            } else {
+                console.error('Expected an array but got:', items);
+            }
+
+            // Handle form submission
+            const form = document.getElementById('purchase-form');
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                const response = await fetch('http://localhost:3000/api/items/purchases', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('Purchase added successfully!');
+                    form.reset();
+                } else {
+                    alert('Failed to add purchase');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

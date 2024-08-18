@@ -28,7 +28,8 @@
 
                     <!-- Brand Logo / Name -->
                     <div class="flex items-center px-6 py-3 h-16">
-                        <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span class="text-indigo-700">MS</span></div>
+                        <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span
+                                class="text-indigo-700">MS</span></div>
                     </div>
                     <!-- @end Brand Logo / Name -->
 
@@ -75,10 +76,10 @@
 
                             <li>
                                 <a href="users.html"
-                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
-                                <i data-lucide="user" class="w-5 mr-5"></i>
-                                Users
-                            </a>
+                                    class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
+                                    <i data-lucide="user" class="w-5 mr-5"></i>
+                                    Users
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +94,8 @@
 
                 <!-- Brand Logo / Name -->
                 <div class="flex items-center px-6 py-3 h-16">
-                    <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span class="text-indigo-700">MS</span></div>
+                    <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span
+                            class="text-indigo-700">MS</span></div>
                 </div>
                 <!-- @end Brand Logo / Name -->
 
@@ -140,10 +142,10 @@
 
                         <li>
                             <a href="users.html"
-                            class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
-                            <i data-lucide="user" class="w-5 mr-5"></i>
-                            Users
-                        </a>
+                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
+                                <i data-lucide="user" class="w-5 mr-5"></i>
+                                Users
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -168,7 +170,8 @@
                                 <line x1="4" y1="18" x2="20" y2="18" />
                             </svg>
                         </div>
-                        <div class="text-xl font-bold tracking-tight text-gray-800 md:hidden ml-2">Fuel<span class="text-indigo-700">MS</span></div>
+                        <div class="text-xl font-bold tracking-tight text-gray-800 md:hidden ml-2">Fuel<span
+                                class="text-indigo-700">MS</span></div>
                     </div>
                     <div class="flex items-center">
 
@@ -222,18 +225,126 @@
                             Create Invoice
                         </button>
                     </div>
-                    
+
                     <div class="bg-white p-4 rounded">
-                        <h1>Content</h1>
+                        <div class=" bg-white p-6 rounded-lg shadow-md">
+                            <div class="mb-4">
+                                <input type="text" id="searchProduct" placeholder="Search Product"
+                                    class="w-full px-4 py-2 border rounded-lg" />
+                            </div>
+                            <table class="w-full text-left table-auto">
+                                <thead>
+                                    <tr>
+                                        <th class="px-4 py-2 border">SL</th>
+                                        <th class="px-4 py-2 border">Product</th>
+                                        <th class="px-4 py-2 border">Quantity</th>
+                                        <th class="px-4 py-2 border">Purchase Price</th>
+                                        <th class="px-4 py-2 border">Selling Price</th>
+                                        <th class="px-4 py-2 border">Amount</th>
+                                        <th class="px-4 py-2 border">Tax%</th>
+                                        <th class="px-4 py-2 border">Tax</th>
+                                        <th class="px-4 py-2 border">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productRows">
+                                    <!-- Rows will be added dynamically here -->
+                                </tbody>
+                            </table>
+                            <button id="addProduct" class="flex gap-2 mt-4 px-4 py-2 bg-indigo-700 text-white rounded">
+                                <i data-lucide="plus"></i>
+                                Add Product
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                let productCount = 1;
+
+                const addProductRow = () => {
+                    const tableBody = document.getElementById('productRows');
+
+                    const row = document.createElement('tr');
+                    row.classList.add('productRow');
+
+                    row.innerHTML = `
+                        <td class="px-4 py-2 border text-center">${productCount}</td>
+                        <td class="px-4 py-2 border">
+                            <input type="" class="w-full border rounded-lg p-2" placeholder="Product Name">
+                        </td>
+                        <td class="px-4 py-2 border">
+                            <input type="number" class="w-full border rounded-lg p-2 quantity" placeholder="Quantity" min="1" value="1">
+                        </td>
+                        <td class="px-4 py-2 border">
+                            <input type="number" class="w-full border rounded-lg p-2 purchasePrice" placeholder="Purchase Price" min="0" value="0">
+                        </td>
+                        <td class="px-4 py-2 border">
+                            <input type="number" class="w-full border rounded-lg p-2 sellingPrice" placeholder="Selling Price" min="0" value="0">
+                        </td>
+                        <td class="px-4 py-2 border amount">0.00</td>
+                        <td class="px-4 py-2 border">
+                            <input type="number" class="w-full border rounded-lg p-2 taxPercent" placeholder="Tax%" min="0" value="0">
+                        </td>
+                        <td class="px-4 py-2 border taxAmount">0.00</td>
+                        <td class="px-4 py-2 border text-center">
+                            <button class="removeRow text-red-500">&times;</button>
+                        </td>
+                    `;
+
+                    tableBody.appendChild(row);
+
+                    // Increment product count
+                    productCount++;
+
+                    // Add event listeners for the new row
+                    row.querySelector('.quantity').addEventListener('input', calculateAmount);
+                    row.querySelector('.purchasePrice').addEventListener('input', calculateAmount);
+                    row.querySelector('.taxPercent').addEventListener('input', calculateTax);
+                    row.querySelector('.removeRow').addEventListener('click', removeRow);
+                };
+
+                const calculateAmount = (event) => {
+                    const row = event.target.closest('tr');
+                    const quantity = parseFloat(row.querySelector('.quantity').value);
+                    const purchasePrice = parseFloat(row.querySelector('.purchasePrice').value);
+                    const amountCell = row.querySelector('.amount');
+
+                    const amount = quantity * purchasePrice;
+                    amountCell.textContent = amount.toFixed(2);
+
+                    calculateTax(event); // Recalculate tax whenever amount changes
+                };
+
+                const calculateTax = (event) => {
+                    const row = event.target.closest('tr');
+                    const amount = parseFloat(row.querySelector('.amount').textContent);
+                    const taxPercent = parseFloat(row.querySelector('.taxPercent').value);
+                    const taxAmountCell = row.querySelector('.taxAmount');
+
+                    const taxAmount = (amount * taxPercent) / 100;
+                    taxAmountCell.textContent = taxAmount.toFixed(2);
+                };
+
+                const removeRow = (event) => {
+                    const row = event.target.closest('tr');
+                    row.remove();
+                };
+
+                // Add initial row
+                addProductRow();
+
+                // Add new product row on button click
+                document.getElementById('addProduct').addEventListener('click', addProductRow);
+            });
+        </script>
 
         <script src="https://unpkg.com/lucide@latest"></script>
         <script>
             lucide.createIcons();
         </script>
+
     </body>
 
 </html>

@@ -1,7 +1,7 @@
 const pool = require("../database/index")
 
 const itemsController = {
-    // Gell all posts
+    // Gell all items
     getAll: async (req, res) => {
         try {
             const [rows, fields] = await pool.query("SELECT * FROM items ORDER BY id DESC")
@@ -15,7 +15,7 @@ const itemsController = {
             })
         }
     },
-    // Get single post
+    // Get single item
     getById: async (req, res) => {
         try {
             const { id } = req.params
@@ -31,7 +31,7 @@ const itemsController = {
         }
     },
 
-    // INSERT POST IN TO DATABASE
+    // INSERT ITEM IN TO DATABASE
     create: async (req, res) => {
         try {
             const { name, description, open_meter, close_meter, volume, rate, qty, tank } = req.body

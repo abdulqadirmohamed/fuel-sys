@@ -31,7 +31,7 @@ const customersController = {
         }
     },
 
-    // INSERT POST IN TO DATABASE
+    // INSERT customer IN TO DATABASE
     create: async (req, res) => {
         try {
             const { name, phone, address } = req.body

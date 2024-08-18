@@ -421,11 +421,11 @@
                 let tab = '';
                 data.forEach(function (item) {
                     tab += `<tr>
-            <td>${item.name}</td>
-            <td>${item.open_meter}</td>
-            <td>${item.close_meter}</td>
+            <td>${item.item_name}</td>
+            <td>${item.open_meter_reading}</td>
+            <td>${item.close_meter_reading}</td>
             <td>${item.volume}</td>
-            <td>${item.tank}</td>
+            <td>${item.receiving_tank}</td>
             <td>${new Date(item.entry_date).toLocaleDateString()}</td>
         </tr>`;
                 });
