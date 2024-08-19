@@ -48,48 +48,35 @@ const purchasesController = {
     },
 
     // Remain 
-    // remaining_Volume: async (req, res) => {
-    //     try {
-    //         const [rows] = await pool.query(
-    //             'SELECT MINUS (volume) AS total_sales_today FROM sales WHERE DATE(sale_date) = CURDATE()'
-    //         );
-
-    //         const totalSalesToday = rows[0].total_sales_today || 0;
-    //         res.json({ total_sales_today: totalSalesToday });
-    //     } catch (error) {
-    //         res.status(500).json({ error: 'Failed to retrieve today\'s sales' });
-    //     }
-    // },
-
-    // Endpoint to get remaining volume
     remaining_Volume: async (req, res) => {
         try {
-            // Query to get the total sales volume today
-            const [salesRows] = await pool.query(
-                'SELECT SUM(volume) AS total_sales_today FROM sales WHERE DATE(sale_date) = CURDATE()'
-            );
-            const totalSalesToday = salesRows[0].total_sales_today || 0;
-
-            // Query to get the total recorded volume today
-            const [recordedRows] = await pool.query(
-                'SELECT SUM(volume) AS total_recorded_volume_today FROM fuel_management WHERE DATE(entry_date) = CURDATE()'
-            );
-            const totalRecordedVolumeToday = recordedRows[0].total_recorded_volume_today || 0;
-
-            // Calculate the remaining volume
-            const totalRemainingVolume = totalRecordedVolumeToday - totalSalesToday;
-
-            res.json({
-                total_sales_today: totalSalesToday,
-                total_remaining_volume: totalRemainingVolume
-            });
+            const [rows, fields] = await pool.query("SELECT (SELECT SUM(volume) FROM items) - (SELECT SUM(volume) FROM sales) AS remaining_volume;")
+            const remainVolume = rows[0].remaining_volume || 0;
+            res.json({ remaining_volume: remainVolume })
+            // res.json({data:rows})
         } catch (error) {
-            res.status(500).json({ error: 'Failed to retrieve volume data' });
+            console.log(error)
+            res.json({
+                status: "error"
+            })
         }
     },
 
+    // Sales Money based on Today
 
-
+    salesToday: async (req, res) => {
+        try {
+            const [rows, fields] = await pool.query("SELECT SUM(total_amount) AS sales_today FROM sales WHERE DATE(sale_date) = CURDATE()")
+            const remainVolume = rows[0].sales_today || 0;
+            res.json({ sales_today: remainVolume })
+            // res.json({data:rows})
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    },
 
 }
 

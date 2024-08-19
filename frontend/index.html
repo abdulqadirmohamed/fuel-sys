@@ -229,7 +229,7 @@
                     <div class="grid grid-cols-4 gap-5">
                         <div class="bg-white flex justify-between items-center p-5 rounded">
                             <div>
-                                <h1 class="font-bold text-xl" id="sales-today">$0.00</h1>
+                                <h1 class="font-bold text-xl" id="sales-today">0.00</h1>
                                 <p class="text-gray-500">Total Sales Volume</p>
                             </div>
                             <div class="bg-indigo-700 p-4 rounded-md text-indigo-100">
@@ -238,7 +238,7 @@
                         </div>
                         <div class="bg-white flex justify-between items-center p-5 rounded">
                             <div>
-                                <h1 class="font-bold text-xl">200</h1>
+                                <h1 class="font-bold text-xl" id="remainingVolume">0.00</h1>
                                 <p class="text-gray-500"> Total Remaining Volume</p>
                             </div>
                             <div class="bg-red-700 p-4 rounded-md text-indigo-100">
@@ -247,7 +247,7 @@
                         </div>
                         <div class="bg-white flex justify-between items-center p-5 rounded">
                             <div>
-                                <h1 class="font-bold text-xl">400</h1>
+                                <h1 class="font-bold text-xl" id="today-sales-amont">0</h1>
                                 <p class="text-gray-500">Sales Money based on Today</p>
                             </div>
                             <div class="bg-green-700 p-4 rounded-md text-indigo-100">
@@ -264,9 +264,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-3 gap-5 my-10">
-                        <div class="col-span-2">
-                            <h1>Today sales</h1>
+                    <div class="grid grid-cols-3 gap-5 my-5">
+                        <div class="col-span-2 bg-white rounded p-4">
+                            <h1>Invoice</h1>
                             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                                 <div class="inline-block min-w-full rounded overflow-hidden">
                                     <table class="min-w-full leading-normal">
@@ -298,12 +298,12 @@
                                                     <div class="flex">
                                                         <div class="flex-shrink-0 w-10 h-10">
                                                             <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                                src="https://avatars.githubusercontent.com/u/63993502?v=4"
                                                                 alt="" />
                                                         </div>
                                                         <div class="ml-3">
                                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                                Molly Sanders
+                                                                Abdulqadir Mohamed
                                                             </p>
                                                             <p class="text-gray-600 whitespace-no-wrap">000004
                                                             </p>
@@ -315,7 +315,7 @@
                                                     <p class="text-gray-600 whitespace-no-wrap">USD</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Sept 28, 2019
+                                                    <p class="text-gray-900 whitespace-no-wrap">Aug 19, 2024
                                                     </p>
                                                     <p class="text-gray-600 whitespace-no-wrap">Due in 3 days
                                                     </p>
@@ -345,12 +345,12 @@
                                                     <div class="flex">
                                                         <div class="flex-shrink-0 w-10 h-10">
                                                             <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                                src="https://i.pinimg.com/736x/b3/3c/35/b33c352b6c78c96620c5ccd753ce7b0c.jpg"
                                                                 alt="" />
                                                         </div>
                                                         <div class="ml-3">
                                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                                Michael Roberts
+                                                                Fatima Abdi
                                                             </p>
                                                             <p class="text-gray-600 whitespace-no-wrap">000003
                                                             </p>
@@ -358,11 +358,11 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">$214,000</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">$54,000</p>
                                                     <p class="text-gray-600 whitespace-no-wrap">USD</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Sept 25, 2019
+                                                    <p class="text-gray-900 whitespace-no-wrap">Aug 18, 2024
                                                     </p>
                                                     <p class="text-gray-600 whitespace-no-wrap">Due in 6 days
                                                     </p>
@@ -403,25 +403,47 @@
             </div>
         </div>
         <script>
+
+            // Get total sales
             async function fetchTodaySales() {
                 try {
                     const response = await fetch('http://localhost:3000/api/sales/today');
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
                     const data = await response.json();
-                    const totalSalesToday = Number(data.total_sales_today);
 
-                    if (isNaN(totalSalesToday)) {
-                        throw new Error('Invalid data format');
-                    }
-                    document.getElementById('sales-today').textContent = `$${totalSalesToday.toFixed(2)}`;
+                    document.getElementById("sales-today").textContent = data.total_sales_today;
                 } catch (error) {
-                    console.error('Error fetching today\'s sales:', error);
-                    // Handle error appropriately
+                    console.error("Error fetching remaining volume:", error);
                 }
             }
-            fetchTodaySales()
+            document.addEventListener("DOMContentLoaded", fetchTodaySales);
+
+            // Get total remain volume
+            async function getRemainingVolume() {
+                try {
+                    const response = await fetch('http://localhost:3000/api/sales/remain');
+                    const data = await response.json();
+
+                    document.getElementById("remainingVolume").textContent = data.remaining_volume;
+                } catch (error) {
+                    console.error("Error fetching remaining volume:", error);
+                }
+            }
+            document.addEventListener("DOMContentLoaded", getRemainingVolume);
+            
+            // Sales Money based on Today
+            async function getTodaySalesMoney() {
+                try {
+                    const response = await fetch('http://localhost:3000/api/sales/salesAmount');
+                    const data = await response.json();
+
+                    document.getElementById("today-sales-amont").textContent = data.sales_today;
+                } catch (error) {
+                    console.error("Error fetching remaining volume:", error);
+                }
+            }
+            document.addEventListener("DOMContentLoaded", getTodaySalesMoney);
+
+
 
             async function totalCustomers() {
                 fetch('http://localhost:3000/api/customers/total')  // Adjust the URL according to your API endpoint
