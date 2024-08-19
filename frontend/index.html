@@ -8,6 +8,7 @@
 </head>
 <script src="https://cdn.tailwindcss.com"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
 
@@ -255,7 +256,7 @@
                         </div>
                         <div class="bg-white flex justify-between items-center p-5 rounded">
                             <div>
-                                <h1 class="font-bold text-xl" id="totalCustomers"></h1>
+                                <h1 class="font-bold text-xl" id="totalCustomers">0</h1>
                                 <p class="text-gray-500">Total Customers</p>
                             </div>
                             <div class="bg-yellow-500 p-4 rounded-md text-indigo-100">
@@ -263,9 +264,9 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="grid grid-cols-3 gap-5 my-10">
                         <div class="col-span-2">
+                            <h1>Today sales</h1>
                             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                                 <div class="inline-block min-w-full rounded overflow-hidden">
                                     <table class="min-w-full leading-normal">
@@ -394,7 +395,9 @@
                             </div>
 
                         </div>
-                        <div>2</div>
+                        <div class="bg-white rounded p-4">
+                            <canvas id="myChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -420,18 +423,43 @@
             }
             fetchTodaySales()
 
-            document.getElementById('fetchTotalCustomers').addEventListener('click', function () {
+            async function totalCustomers() {
                 fetch('http://localhost:3000/api/customers/total')  // Adjust the URL according to your API endpoint
                     .then(response => response.json())
-                    console.log(response)
                     .then(data => {
-                        document.getElementById('totalCustomers').textContent = `Total Customers: ${data.total_customers}`;
+                        const totalCustomers = data.data[0].total;
+                        document.getElementById('totalCustomers').textContent = totalCustomers;
                     })
                     .catch(error => {
                         console.error('Error fetching total customers:', error);
                     });
+            }
+            totalCustomers()
+        </script>
+
+        <script>
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
             });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://unpkg.com/lucide@latest"></script>
         <script>
             lucide.createIcons();
