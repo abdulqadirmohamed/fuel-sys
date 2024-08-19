@@ -18,10 +18,9 @@ const purchasesController = {
         }
     },
 
-    // Gell all purchases
     getAll: async (req, res) => {
         try {
-            const [rows, fields] = await pool.query("SELECT * FROM sales ORDER BY sale_id DESC")
+            const [rows, fields] = await pool.query("SELECT * FROM sales JOIN customers ON sales.sale_id = customers.id JOIN items ON sales.sale_id = items.id;")
             res.json({
                 data: rows
             })

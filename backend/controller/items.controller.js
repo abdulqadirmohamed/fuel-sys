@@ -34,9 +34,9 @@ const itemsController = {
     // INSERT ITEM IN TO DATABASE
     create: async (req, res) => {
         try {
-            const { name, description, open_meter, close_meter, volume, rate, qty, tank } = req.body
-            const sql = "insert into items (name, description, open_meter, close_meter, volume, rate, qty, tank) values (?, ?, ?, ?, ?, ?, ?, ?)"
-            const [rows, fields] = await pool.query(sql, [name, description, open_meter, close_meter, volume, rate, qty, tank])
+            const { item_name, item_description, open_meter_reading, close_meter_reading, volume, item_rate, evaporation_loss, receiving_tank, item_price } = req.body
+            const sql = "insert into items (item_name, item_description, open_meter_reading, close_meter_reading, volume, item_rate, evaporation_loss, receiving_tank, item_price) values (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            const [rows, fields] = await pool.query(sql, [item_name, item_description, open_meter_reading, close_meter_reading, volume, item_rate, evaporation_loss, receiving_tank, item_price])
             res.json({
                 data: rows
             })
@@ -51,10 +51,10 @@ const itemsController = {
     // Update data
     update: async (req, res) => {
         try {
-            const { name, description, open_meter, close_meter, volume, rate, qty, tank } = req.body
+            const { item_name, item_description, open_meter_reading, close_meter_reading, volume, item_rate, evaporation_loss, receiving_tank, item_price } = req.body
             const { id } = req.params
-            const sql = "update items set title = ?, content = ? where id = ?"
-            const [rows, fields] = await pool.query(sql, [name, description, open_meter, close_meter, volume, rate, qty, tank, id])
+            const sql = "update items set item_name = ?, item_description = ?, open_meter_reading = ?, close_meter_reading = ?, volume = ?, item_rate = ?, evaporation_loss = ?, receiving_tank = ?, item_price = ? where id = ?"
+            const [rows, fields] = await pool.query(sql, [item_name, item_description, open_meter_reading, close_meter_reading, volume, item_rate, evaporation_loss, receiving_tank, item_price, id])
             res.json({
                 data: rows
             })
