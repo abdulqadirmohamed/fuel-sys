@@ -28,7 +28,8 @@
 
                     <!-- Brand Logo / Name -->
                     <div class="flex items-center px-6 py-3 h-16">
-                        <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span class="text-indigo-700">MS</span>.</div>
+                        <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span
+                                class="text-indigo-700">MS</span>.</div>
                     </div>
                     <!-- @end Brand Logo / Name -->
 
@@ -75,10 +76,10 @@
 
                             <li>
                                 <a href="users.html"
-                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
-                                <i data-lucide="user" class="w-5 mr-5"></i>
-                                Users
-                            </a>
+                                    class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
+                                    <i data-lucide="user" class="w-5 mr-5"></i>
+                                    Users
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -93,7 +94,8 @@
 
                 <!-- Brand Logo / Name -->
                 <div class="flex items-center px-6 py-3 h-16">
-                    <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span class="text-indigo-700">MS</span></div>
+                    <div class="text-2xl font-bold tracking-tight text-gray-800">Fuel<span
+                            class="text-indigo-700">MS</span></div>
                 </div>
                 <!-- @end Brand Logo / Name -->
 
@@ -140,10 +142,10 @@
 
                         <li>
                             <a href="users.html"
-                            class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
-                            <i data-lucide="user" class="w-5 mr-5"></i>
-                            Users
-                        </a>
+                                class="mb-1 px-2 py-2 rounded-lg flex items-center font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-200">
+                                <i data-lucide="user" class="w-5 mr-5"></i>
+                                Users
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -168,7 +170,8 @@
                                 <line x1="4" y1="18" x2="20" y2="18" />
                             </svg>
                         </div>
-                        <div class="text-xl font-bold tracking-tight text-gray-800 md:hidden ml-2">Fuel<span class="text-indigo-700">MS</span></div>
+                        <div class="text-xl font-bold tracking-tight text-gray-800 md:hidden ml-2">Fuel<span
+                                class="text-indigo-700">MS</span></div>
                     </div>
                     <div class="flex items-center">
 
@@ -209,7 +212,7 @@
                 <div class=" px-4 py-8">
 
                     <div class="bg-white p-4 rounded flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-indigo-700">Reports</h2>
+                        <h2 class="text-xl font-bold text-indigo-700">Customer Data Filter/Update</h2>
                         <button
                             class="shadow inline-flex items-center bg-indigo-700 hover:bg-blue-600 focus:outline-none focus:shadow-outline text-white font-semibold py-2 px-4 rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 w-5 h-5" viewBox="0 0 24 24"
@@ -222,13 +225,152 @@
                             Create Invoice
                         </button>
                     </div>
-                    
+
                     <div class="bg-white p-4 rounded">
-                        <h1>Content</h1>
+                        <div id="app" class="text-black p-6">
+                            <!-- Filter Section -->
+                            <div class="mb-6">
+                                <form id="filterForm" class="space-y-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="customer-id" class="block text-sm font-medium text-gray-700">Customer ID</label>
+                                            <input type="text" id="customer-id" name="customer-id" placeholder="Enter Customer ID" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                        </div>
+                                        <div>
+                                            <label for="customer-name" class="block text-sm font-medium text-gray-700">Customer Name</label>
+                                            <input type="text" id="customer-name" name="customer-name" placeholder="Enter Customer Name" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                                            <input type="date" id="start-date" name="start-date" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                        </div>
+                                        <div>
+                                            <label for="end-date" class="block text-sm font-medium text-gray-700">End Date</label>
+                                            <input type="date" id="end-date" name="end-date" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-4">
+                                        <button type="button" onclick="fetchCustomerReport()" class="bg-indigo-700 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">Fetch Report</button>
+                                        <button type="reset" class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-400">Clear</button>
+                                    </div>
+                                </form>
+                            </div>
+                        
+                            <!-- Customer Report Section -->
+                            <div id="customerReport" class="hidden mb-4">
+                                <h2 class="text-pink-500 text-lg font-bold">Customer Report</h2>
+                                <div id="customerInfo" class="border-b border-gray-300 my-2"></div>
+                            </div>
+                        
+                            <!-- Table Section -->
+                            <div class="overflow-x-auto">
+                                <table id="reportTable" class="min-w-full table-auto border-collapse hidden">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-2 border border-gray-300 text-left">Sale Date</th>
+                                            <th class="px-4 py-2 border border-gray-300 text-left">Item Name</th>
+                                            <th class="px-4 py-2 border border-gray-300 text-left">Volume (liters)</th>
+                                            <th class="px-4 py-2 border border-gray-300 text-left">Total Amount ($)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reportTableBody">
+                                        <!-- Dynamic rows will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                            <!-- Summary Section -->
+                            <div id="summarySection" class="hidden mt-4">
+                                <p id="totalVolume" class="text-pink-500 font-bold"></p>
+                                <p id="totalAmount" class="text-pink-500 font-bold"></p>
+                            </div>
+                        </div>
+                        
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            function fetchCustomerReport() {
+    const customerId = document.getElementById('customer-id').value;
+    const customerName = document.getElementById('customer-name').value;
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+
+    let apiUrl = `http://localhost:3000/api/report/${customerId}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.data && data.data.length > 0) {
+                let reportData = data.data;
+
+                // Filter data based on date range
+                if (startDate) {
+                    reportData = reportData.filter(record => new Date(record.sale_date) >= new Date(startDate));
+                }
+                if (endDate) {
+                    reportData = reportData.filter(record => new Date(record.sale_date) <= new Date(endDate));
+                }
+
+                if (reportData.length === 0) {
+                    alert('No data found for the selected date range.');
+                    return;
+                }
+
+                const customerName = reportData[0].customer_name;
+                const phone = reportData[0].phone;
+                const address = reportData[0].address || 'N/A';
+
+                // Update Customer Info
+                const customerInfo = `
+                    <p>Customer Name: ${customerName}</p>
+                    <p>Phone: ${phone}</p>
+                    <p>Address: ${address}</p>
+                `;
+                document.getElementById('customerInfo').innerHTML = customerInfo;
+                document.getElementById('customerReport').classList.remove('hidden');
+
+                // Update Table
+                const tableBody = document.getElementById('reportTableBody');
+                tableBody.innerHTML = ''; // Clear previous data
+
+                reportData.forEach(record => {
+                    const row = `
+                        <tr>
+                            <td class="px-4 py-2 border border-gray-300">${new Date(record.sale_date).toLocaleDateString()}</td>
+                            <td class="px-4 py-2 border border-gray-300">${record.item_name}</td>
+                            <td class="px-4 py-2 border border-gray-300">${record.volume} liters</td>
+                            <td class="px-4 py-2 border border-gray-300">$${record.total_amount}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+
+                document.getElementById('reportTable').classList.remove('hidden');
+
+                // Update Summary
+                const totalVolume = reportData[0].total_volume_purchased;
+                const totalAmount = reportData[0].total_amount_spent;
+
+                document.getElementById('totalVolume').textContent = `Total Volume Purchased: ${totalVolume} liters`;
+                document.getElementById('totalAmount').textContent = `Total Amount Spent: $${totalAmount}`;
+                document.getElementById('summarySection').classList.remove('hidden');
+            } else {
+                alert('No data found for the given Customer ID.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            alert('Failed to fetch data. Please try again later.');
+        });
+}
+
+        </script>
 
         <script src="https://unpkg.com/lucide@latest"></script>
         <script>

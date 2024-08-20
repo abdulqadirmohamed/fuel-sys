@@ -310,7 +310,7 @@
         </div>
         <script>
 
-            // Get total sales
+            // Total sales volume
             async function fetchTodaySales() {
                 try {
                     const response = await fetch('http://localhost:3000/api/sales/today');
@@ -323,7 +323,7 @@
             }
             document.addEventListener("DOMContentLoaded", fetchTodaySales);
 
-            // Get total remain volume
+            // Total remain volume
             async function getRemainingVolume() {
                 try {
                     const response = await fetch('http://localhost:3000/api/sales/remain');
@@ -349,8 +349,7 @@
             }
             document.addEventListener("DOMContentLoaded", getTodaySalesMoney);
 
-
-            // Fetch customers
+            // Total customers
             async function totalCustomers() {
                 fetch('http://localhost:3000/api/customers/total')  // Adjust the URL according to your API endpoint
                     .then(response => response.json())

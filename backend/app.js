@@ -10,6 +10,7 @@ const usersRouter = require('./router/user.router');
 const purchasesRouter = require('./router/purchase.router')
 const invoicesRouter = require('./router/invoices.router')
 const salesRouter = require('./router/sales.router')
+const reportRouter = require('./router/report.router')
 
 
 app.use(express.urlencoded({extended: false}))
@@ -26,6 +27,8 @@ app.use("/api/customers", customersRouter)
 app.use("/api/purchases", purchasesRouter)
 app.use("/api/invoices", invoicesRouter)
 app.use("/api/sales", salesRouter)
+app.use("/api/report", reportRouter)
+
 
 
 app.use("/api/auth", usersRouter)
