@@ -350,7 +350,7 @@
             document.addEventListener("DOMContentLoaded", getTodaySalesMoney);
 
 
-
+            // Fetch customers
             async function totalCustomers() {
                 fetch('http://localhost:3000/api/customers/total')  // Adjust the URL according to your API endpoint
                     .then(response => response.json())
@@ -364,7 +364,7 @@
             }
             totalCustomers()
 
-            // Sales
+            // Latest Sales
             async function getData() {
                 const records = await fetch('http://localhost:3000/api/sales');
                 const response = await records.json();
@@ -404,17 +404,16 @@
             }
 
             getData();
-        </script>
 
-        <script>
+            //   chart
             const ctx = document.getElementById('myChart');
 
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['15 Aug', '16 Aug', '17 Aug', '18 Aug', '19 Aug', '20 Aug'],
                     datasets: [{
-                        label: '# of Votes',
+                        label: '# of Sales',
                         data: [12, 19, 3, 5, 2, 3],
                         borderWidth: 1
                     }]

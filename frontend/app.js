@@ -1,5 +1,3 @@
-
-
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -11,6 +9,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                // 'Authorization': `Bearer ${accessToken}`,
             },
             body: JSON.stringify({ email, password }),
         });
@@ -27,4 +26,5 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     }
 });
 
-// Items list
+
+

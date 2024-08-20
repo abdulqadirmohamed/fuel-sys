@@ -15,6 +15,7 @@ const salesRouter = require('./router/sales.router')
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
+// Middle ware
 
 app.use(cors({
     origin: 'http://127.0.0.1:5501'
