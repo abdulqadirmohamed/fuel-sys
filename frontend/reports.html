@@ -233,37 +233,50 @@
                                 <form id="filterForm" class="space-y-4">
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
-                                            <label for="customer-id" class="block text-sm font-medium text-gray-700">Customer ID</label>
-                                            <input type="text" id="customer-id" name="customer-id" placeholder="Enter Customer ID" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                            <label for="customer-id"
+                                                class="block text-sm font-medium text-gray-700">Customer ID</label>
+                                            <input type="text" id="customer-id" name="customer-id"
+                                                placeholder="Enter Customer ID"
+                                                class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
                                         </div>
                                         <div>
-                                            <label for="customer-name" class="block text-sm font-medium text-gray-700">Customer Name</label>
-                                            <input type="text" id="customer-name" name="customer-name" placeholder="Enter Customer Name" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                            <label for="customer-name"
+                                                class="block text-sm font-medium text-gray-700">Customer Name</label>
+                                            <input type="text" id="customer-name" name="customer-name"
+                                                placeholder="Enter Customer Name"
+                                                class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
-                                            <label for="start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
-                                            <input type="date" id="start-date" name="start-date" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                            <label for="start-date"
+                                                class="block text-sm font-medium text-gray-700">Start Date</label>
+                                            <input type="date" id="start-date" name="start-date"
+                                                class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
                                         </div>
                                         <div>
-                                            <label for="end-date" class="block text-sm font-medium text-gray-700">End Date</label>
-                                            <input type="date" id="end-date" name="end-date" class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
+                                            <label for="end-date" class="block text-sm font-medium text-gray-700">End
+                                                Date</label>
+                                            <input type="date" id="end-date" name="end-date"
+                                                class="mt-1 block w-full px-3 py-2 bg-gray-200 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500">
                                         </div>
                                     </div>
                                     <div class="flex space-x-4">
-                                        <button type="button" onclick="fetchCustomerReport()" class="bg-indigo-700 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-pink-500">Fetch Report</button>
-                                        <button type="reset" class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-400">Clear</button>
+                                        <button type="button" onclick="fetchCustomerReport()"
+                                            class="bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">Fetch
+                                            Report</button>
+                                        <button type="reset"
+                                            class="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-400">Clear</button>
                                     </div>
                                 </form>
                             </div>
-                        
+
                             <!-- Customer Report Section -->
                             <div id="customerReport" class="hidden mb-4">
-                                <h2 class="text-pink-500 text-lg font-bold">Customer Report</h2>
+                                <h2 class="text-indigo-500 text-lg font-bold">Customer Report</h2>
                                 <div id="customerInfo" class="border-b border-gray-300 my-2"></div>
                             </div>
-                        
+
                             <!-- Table Section -->
                             <div class="overflow-x-auto">
                                 <table id="reportTable" class="min-w-full table-auto border-collapse hidden">
@@ -280,14 +293,14 @@
                                     </tbody>
                                 </table>
                             </div>
-                        
+
                             <!-- Summary Section -->
                             <div id="summarySection" class="hidden mt-4">
-                                <p id="totalVolume" class="text-pink-500 font-bold"></p>
-                                <p id="totalAmount" class="text-pink-500 font-bold"></p>
+                                <p id="totalVolume" class="font-bold"></p>
+                                <p id="totalAmount" class="font-bold"></p>
                             </div>
                         </div>
-                        
+
 
                     </div>
                 </div>
@@ -296,51 +309,51 @@
 
         <script>
             function fetchCustomerReport() {
-    const customerId = document.getElementById('customer-id').value;
-    const customerName = document.getElementById('customer-name').value;
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
+                const customerId = document.getElementById('customer-id').value;
+                const customerName = document.getElementById('customer-name').value;
+                const startDate = document.getElementById('start-date').value;
+                const endDate = document.getElementById('end-date').value;
 
-    let apiUrl = `http://localhost:3000/api/report/${customerId}`;
+                let apiUrl = `http://localhost:3000/api/report/${customerId}`;
 
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            if (data && data.data && data.data.length > 0) {
-                let reportData = data.data;
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.data && data.data.length > 0) {
+                            let reportData = data.data;
 
-                // Filter data based on date range
-                if (startDate) {
-                    reportData = reportData.filter(record => new Date(record.sale_date) >= new Date(startDate));
-                }
-                if (endDate) {
-                    reportData = reportData.filter(record => new Date(record.sale_date) <= new Date(endDate));
-                }
+                            // Filter data based on date range
+                            if (startDate) {
+                                reportData = reportData.filter(record => new Date(record.sale_date) >= new Date(startDate));
+                            }
+                            if (endDate) {
+                                reportData = reportData.filter(record => new Date(record.sale_date) <= new Date(endDate));
+                            }
 
-                if (reportData.length === 0) {
-                    alert('No data found for the selected date range.');
-                    return;
-                }
+                            if (reportData.length === 0) {
+                                alert('No data found for the selected date range.');
+                                return;
+                            }
 
-                const customerName = reportData[0].customer_name;
-                const phone = reportData[0].phone;
-                const address = reportData[0].address || 'N/A';
+                            const customerName = reportData[0].customer_name;
+                            const phone = reportData[0].phone;
+                            const address = reportData[0].address || 'N/A';
 
-                // Update Customer Info
-                const customerInfo = `
+                            // Update Customer Info
+                            const customerInfo = `
                     <p>Customer Name: ${customerName}</p>
                     <p>Phone: ${phone}</p>
                     <p>Address: ${address}</p>
                 `;
-                document.getElementById('customerInfo').innerHTML = customerInfo;
-                document.getElementById('customerReport').classList.remove('hidden');
+                            document.getElementById('customerInfo').innerHTML = customerInfo;
+                            document.getElementById('customerReport').classList.remove('hidden');
 
-                // Update Table
-                const tableBody = document.getElementById('reportTableBody');
-                tableBody.innerHTML = ''; // Clear previous data
+                            // Update Table
+                            const tableBody = document.getElementById('reportTableBody');
+                            tableBody.innerHTML = ''; // Clear previous data
 
-                reportData.forEach(record => {
-                    const row = `
+                            reportData.forEach(record => {
+                                const row = `
                         <tr>
                             <td class="px-4 py-2 border border-gray-300">${new Date(record.sale_date).toLocaleDateString()}</td>
                             <td class="px-4 py-2 border border-gray-300">${record.item_name}</td>
@@ -348,27 +361,27 @@
                             <td class="px-4 py-2 border border-gray-300">$${record.total_amount}</td>
                         </tr>
                     `;
-                    tableBody.innerHTML += row;
-                });
+                                tableBody.innerHTML += row;
+                            });
 
-                document.getElementById('reportTable').classList.remove('hidden');
+                            document.getElementById('reportTable').classList.remove('hidden');
 
-                // Update Summary
-                const totalVolume = reportData[0].total_volume_purchased;
-                const totalAmount = reportData[0].total_amount_spent;
+                            // Update Summary
+                            const totalVolume = reportData[0].total_volume_purchased;
+                            const totalAmount = reportData[0].total_amount_spent;
 
-                document.getElementById('totalVolume').textContent = `Total Volume Purchased: ${totalVolume} liters`;
-                document.getElementById('totalAmount').textContent = `Total Amount Spent: $${totalAmount}`;
-                document.getElementById('summarySection').classList.remove('hidden');
-            } else {
-                alert('No data found for the given Customer ID.');
+                            document.getElementById('totalVolume').textContent = `Total Volume Purchased: ${totalVolume} liters`;
+                            document.getElementById('totalAmount').textContent = `Total Amount Spent: $${totalAmount}`;
+                            document.getElementById('summarySection').classList.remove('hidden');
+                        } else {
+                            alert('No data found for the given Customer ID.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        alert('Failed to fetch data. Please try again later.');
+                    });
             }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            alert('Failed to fetch data. Please try again later.');
-        });
-}
 
         </script>
 
